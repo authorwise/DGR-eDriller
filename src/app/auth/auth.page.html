@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>เข้าสู่ระบบ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="onAuthSubmit()">
+    <ion-row>
+      <ion-col
+        size-sm="6"
+        offset-sm="3"
+        size-md="6"
+        offet-md="5"
+        size-lg="6"
+        offet-lg="5"
+      >
+        <div class="ion-text-center">
+          <div class="logo-warp">
+            <ion-img
+              alt="logo"
+              src="assets/icon/logo_original_color_dgr@3x.png"
+            ></ion-img>
+          </div>
+
+          <h1>DGR e-Driller</h1>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let control of listOfControl; let i = index">
+      <ion-col
+        size-sm="6"
+        offset-sm="3"
+        size-md="6"
+        offet-md="5"
+        size-lg="6"
+        offet-lg="5"
+      >
+        <nz-form-item>
+          <nz-form-label [nzXs]="24" [nzFor]="control.controlInstance">
+            {{ control.label }}
+          </nz-form-label>
+          <nz-form-control [nzXs]="24" [nzErrorTip]="control.errorTip">
+            <input
+              nz-input
+              [type]="control.type"
+              [placeholder]="control.placeholder"
+              [attr.id]="control.id"
+              [formControlName]="control.controlInstance"
+               style="background-color: white;"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col
+        size-sm="6"
+        offset-sm="3"
+        size-md="6"
+        offet-md="5"
+        size-lg="6"
+        offet-lg="5"
+      >
+        <nz-form-item class="margin-top-15">
+          <button
+            nz-button
+            nzType="primary"
+            type="submit"
+            nzShape="round"
+            nzBlock
+          >
+            เข้าสู่ระบบ
+          </button>
+        </nz-form-item>
+        <nz-form-item class="margin-top-10">
+          <a nz-button routerLink="/register" nzType="link" nzGhost nzBlock
+            >ลงทะเบียนผู้ใช้งานระบบ</a
+          >
+        </nz-form-item>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

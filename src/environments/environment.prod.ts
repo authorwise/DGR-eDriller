@@ -1,0 +1,20 @@
+export const environment = {
+  production: true,
+  // jogetUrl: 'http://119.46.179.155:8080/jw',
+  // fileHost: 'http://119.46.179.155:8080',
+  // jogetUrl: 'http://authorwise.co.th:8080/jw',
+  // jogetUrl: 'https://authorwise.co.th:9443/jw',
+  // fileHost: 'https://authorwise.co.th',
+  jogetUrl: 'http://badan.eservice.dgr.go.th:8080/jw',
+  fileHost: 'http://badan.eservice.dgr.go.th',
+  firebaseAPIKey: 'AIzaSyBLggNgunnWjoFTBBhoeIQldofvajOHCb8',
+  jogetParamU: 'admin',
+  googleCloudVisionAPIKey:"AIzaSyBpfc0V2f4RQ4XgHJZgidVG4u2kkjpX-k4", //Update 2021-10-19
+  jogetParamsHash: '14ACD782DCFEB2BCDE2B271CCD559477',
+  googleApi: 'AIzaSyC9UtxqJ9nvKVtMCVUyBUHmgKwKkcokguQ',
+  // dgrNews: 'http://www.dgr.go.th/th/rss/news',
+  // dgrNews: 'http://119.46.179.155',
+  // dgrNews: 'https://authorwise.co.th',
+  dgrNews: 'http://badan.eservice.dgr.go.th',
+  paySolutionsMerchantid: '38719399',
+};

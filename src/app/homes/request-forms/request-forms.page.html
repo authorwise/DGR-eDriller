@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/tabs/dgr/homes"></ion-back-button>
+    </ion-buttons>
+    <ion-title no-border-top>{{ mainMenu }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center" *ngIf="isLoading">
+    <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
+  </div>
+  <ion-list *ngIf="!isLoading">
+      <div *ngFor="let frm of _requestForms" nz-row>
+        <div nz-col class="gutter-row atw-list-menu" [nzSpan]="24">
+          <ion-item
+            [routerLink]="frm.requestLink"
+            routerDirection="forward"
+            lines="full"
+            [style]="itemStyle"
+          >
+            <ion-img [src]="iconList" slot="start"></ion-img>
+            <p>{{ frm.name }}</p>
+          </ion-item>
+        </div>
+      </div>
+  </ion-list>
+</ion-content>

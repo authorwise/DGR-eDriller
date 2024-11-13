@@ -1,0 +1,21 @@
+<nz-form-control
+  [nzSpan]="24"
+  [className]="isError?.invalid ? 'atw-select-invalid' : ''"
+  nzErrorTip="Error"
+  [formGroup]="validateForm"
+>
+  <!-- <nz-checkbox-wrapper style="width: 100%;" (nzOnChange)="log($event)"> -->
+  <!-- <div nz-row>
+      <div nz-col nzSpan="24" *ngFor="let option of options; let i = index">
+        <label nz-checkbox [nzValue]="option.value" [formControlName]="properties.id">{{ option.label }}</label>
+      </div>
+    </div> -->
+  <!-- </nz-checkbox-wrapper> -->
+  <nz-checkbox-wrapper style="width: 100%" (nzOnChange)="log($event)">
+    <div nz-row>
+      <div nz-col nzSpan="24" *ngFor="let option of options">
+        <label nz-checkbox [nzValue]="option.value">{{ option.label }}</label>
+      </div>
+    </div>
+  </nz-checkbox-wrapper>
+</nz-form-control>

@@ -1,0 +1,196 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        [text]=""
+        [defaultHref]="'/tabs/dgr/my-request-forms'"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>รายงานการทดสอบปริมาณน้ำ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="formhasstep" [scrollEvents]="true">
+  <div class="padding-15 padding-b-0">
+    <nz-steps
+      nzDirection="horizontal"
+      nzSize="small"
+      [nzCurrent]="currentStep-1"
+    >
+      <nz-step nzTitle=""></nz-step>
+      <nz-step nzTitle=""></nz-step>
+    </nz-steps>
+  </div>
+
+  <div [className]="'steps-content step-to-'+(currentStep)">
+    <form nz-form (ngSubmit)="submitForm()" [formGroup]="validateForm">
+
+      <!-- Step1 -->
+      <app-atwformgroup
+        [elements]="formObjElm.elements"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-1"
+      ></app-atwformgroup>
+
+      <!-- Step2 -->
+      <app-atwformgroup
+        [elements]="formObjElmNBT4.elements.slice(0,3)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-2"
+      ></app-atwformgroup>
+
+      <ion-card *ngIf="currentStep===2" nzBlock>
+        <ion-card-content>
+          <h3 class="headform">
+            ข้อมูลท่อกรุ
+          </h3>
+          <div nz-row [nzGutter]="[8,8]">
+            <div nz-col nzXs="24">
+              <button
+                nz-button
+                class="login-form-button login-form-margin"
+                [nzType]="'primary'"
+              >
+                รายการ 1
+              </button>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngIf="currentStep===2" nzBlock>
+        <ion-card-content>
+          <h3 class="headform">
+            ข้อมูลขนาดท่อกรองหรือท่อเซาะร่อง
+          </h3>
+          <div nz-row [nzGutter]="[8,8]">
+            <div nz-col nzXs="24">
+              <button
+                nz-button
+                class="login-form-button login-form-margin"
+                [nzType]="'primary'"
+              >
+                รายการ 2
+              </button>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <app-atwformgroup
+        [elements]="formObjElmNBT4.elements.slice(4,9)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-2"
+      ></app-atwformgroup>
+
+      <ion-card *ngIf="currentStep===2" nzBlock>
+        <ion-card-content>
+          <h3 class="headform">
+            รายละเอียดการทดสอบขณะทำการสูบน้ำจากบ่อน้ำบาดาล
+          </h3>
+          <div nz-row [nzGutter]="[8,8]">
+            <div nz-col nzXs="24">
+              <button
+                nz-button
+                class="login-form-button login-form-margin"
+                [nzType]="'primary'"
+              >
+                รายการ 3
+              </button>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <app-atwformgroup
+        [elements]="formObjElmNBT4.elements.slice(10,11)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-2"
+      ></app-atwformgroup>
+
+      <ion-card *ngIf="currentStep===3" nzBlock>
+        <ion-card-content>
+          <h3 class="headform">
+            รายละเอียดระยะน้ำคืนตัว
+          </h3>
+          <div nz-row [nzGutter]="[8,8]">
+            <div nz-col nzXs="24">
+              <button
+                nz-button
+                class="login-form-button login-form-margin"
+                [nzType]="'primary'"
+              >
+                รายการ 4
+              </button>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <app-atwformgroup
+        [elements]="formObjElmNBT4.elements.slice(12,13)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-2"
+      ></app-atwformgroup>
+
+      <div class="padding-15">
+        <div nz-row [nzGutter]="[8,8]">
+          <div nz-col nzXs="12">
+            <button
+              nz-button
+              class="login-form-button login-form-margin"
+              [nzType]="'primary'"
+              type="button"
+              *ngIf="currentStep>1"
+              nzBlock
+              (click)="prevStep()"
+            >
+              <i nz-icon nzType="left"></i> ย้อนกลับ
+            </button>
+          </div>
+          <div nz-col nzXs="12">
+            <button
+              nz-button
+              class="login-form-button login-form-margin"
+              [nzType]="'primary'"
+              type="button"
+              nzBlock
+              (click)="nextStep()"
+              *ngIf="currentStep<2"
+            >
+              ถัดไป <i nz-icon nzType="right"></i>
+            </button>
+          </div>
+          <div nz-col nzXs="24">
+            <button
+              nz-button
+              class="login-form-button login-form-margin"
+              [nzType]="'primary'"
+              type="submit"
+              *ngIf="currentStep===2"
+              nzBlock
+            >
+              ส่งข้อมูลคำขอ
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</ion-content>

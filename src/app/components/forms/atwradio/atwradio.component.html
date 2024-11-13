@@ -1,0 +1,20 @@
+<div [formGroup]="validateForm">
+  <nz-radio-group
+    [ngStyle]="styleGroups"
+    [(ngModel)]="radioValue"
+    [nzName]="properties.id"
+    [id]="properties.id"
+    [nzDisabled]="isDisabled"
+    [nzHasFeedback]="isError?.errors"
+    [formControlName]="properties.id"
+    (ngModelChange)="onRadioChange($event)"
+  >
+    <label
+      *ngFor="let option of properties.options"
+      [ngStyle]="style"
+      nz-radio
+      [nzValue]="option.value"
+      >{{ option.label }}</label
+    >
+  </nz-radio-group>
+</div>

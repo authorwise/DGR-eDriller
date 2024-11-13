@@ -1,0 +1,20 @@
+<nz-form-control [className]="isError?.invalid ? 'atw-select-invalid' : ''" nzErrorTip="สำคัญ" [formGroup]="validateForm">
+    <button nz-button nzBlock nzType="default" type="button" (click)="showPicker()" [id]="formId" [disabled]="false">
+    {{ getDisplayDate() }}
+    <i
+      *ngIf="!isOpen"
+      [ngStyle]="iconStyle"
+      nz-icon
+      nzType="down"
+      nzTheme="outline"
+    ></i
+    ><i
+      *ngIf="isOpen"
+      [ngStyle]="iconStyle"
+      nz-icon
+      nzType="up"
+      nzTheme="outline"
+    ></i>
+  </button>
+    <input nz-input [name]="formId" type="hidden" [value]="inputValBack" [(ngModel)]="inputValBack" [formControlName]="formId" />
+</nz-form-control>

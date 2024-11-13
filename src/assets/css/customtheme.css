@@ -1,0 +1,10 @@
+ion-header ion-title {
+  color: #f6bd46;
+}
+ion-header,
+div.toolbar-background {
+  background: #006400 !important;
+}
+body {
+  background-color: #f0f4f7;
+}

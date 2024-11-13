@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-title>{{ properties.label }}</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button  (click)="onCancel()">
+                <ion-icon slot="icon-only" name="close"></ion-icon> ยกเลิก
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar>
+        <form nz-form (ngSubmit)="submitForm()">
+            <nz-form-item class="ion-padding-min">
+                <nz-input-group [nzSuffix]="suffixIconSearch">
+                    <input [(ngModel)]="inputValue" type="text" nz-input name="search" placeholder="พิมพ์ keyword ข้อความ" />
+                </nz-input-group>
+                <ng-template #suffixIconSearch>
+                    <i nz-icon nzType="search" (click)="submitForm()"></i>
+                </ng-template>
+            </nz-form-item>
+        </form>
+    </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+    <ion-list class="popuplistselect">
+            <ion-item [color]="backVal === option[properties.idField] ? 'primary' : 'light'"  *ngFor="let option of cacheOptions" button (click)="buttonClick(option)">
+                <nz-skeleton *ngIf="!option" [nzAvatar]="true" [nzParagraph]="{ rows: 1 }"></nz-skeleton>
+                <ion-icon *ngIf="backVal === option[properties.idField]" name="checkmark-circle" slot="end"></ion-icon>
+                <ion-label>
+                    <h2>
+                        <highlighted-text [needle]="searchVal" [haystack]="option[properties.displayField]"></highlighted-text>
+                    </h2>
+                    <p *ngFor="let item of option | keyvalue">
+                        <strong *ngIf="
+                item.key !== properties.displayField &&
+                item.key !== properties.idField
+              ">{{ getKeyToMap(''+item.key) }} : </strong
+            ><highlighted-text
+              *ngIf="
+                item.key !== properties.displayField &&
+                item.key !== properties.idField
+              "
+              [needle]="searchVal"
+              [haystack]="option[''+item.key]"
+            ></highlighted-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      <nz-list-empty *ngIf="options.length === 0"></nz-list-empty>
+  </ion-list>
+</ion-content>

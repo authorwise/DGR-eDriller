@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>testcontrol</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form nz-form (ngSubmit)="submitForm()" [formGroup]="validateForm">
+    <app-atwformgroup
+      [validateForm]="validateForm"
+      [elements]="sectionData.elements"
+      [mapPickerBind]="mapPickerBind"
+      [spreadsheetPickerBind]="spreadsheetPickerBind"
+    ></app-atwformgroup>
+    <button
+      nz-button
+      class="login-form-button login-form-margin"
+      [nzType]="'primary'"
+      type="submit"
+    >
+      Log in
+    </button>
+    <button
+      nz-button
+      class="login-form-button login-form-margin"
+      [nzType]="'primary'"
+      (click)="testRedirect()"
+      type="button"
+    >
+      Test Link
+    </button>
+  </form>
+</ion-content>

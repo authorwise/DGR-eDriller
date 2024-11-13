@@ -1,0 +1,30 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>ลงทะเบียน</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div [style]="centerStyle">
+    <p>
+      กรุณาวางบัตรให้อยู่ในกรอบที่กำหนดให้เห็นตัวอักษร และข้อมูลบนหน้าบัตรชัดเจน
+    </p>
+    <a style="height: 200px; overflow: hidden;" nz-button nzType="link"
+      [class]="'link-to-cam'+(hasImage?' has-cardid':' ')" (click)="setCam()">
+      <ion-img [src]="imageUri || '../../assets/icon/idcard.png'"></ion-img>
+      <span>{{cardId}}</span>
+      <div class="overlay-img"></div>
+    </a>
+    <small>
+      หากสแกนไม่สำเร็จ กรุณารอสักครู่เพื่อถ่ายรูปยืนยันตัวตนด้วยตนเอง ทั้งนี้
+      ขอสงวนสิทธิในการยกเลิกการลงทะเบียนผู้ใช้
+      ในกรณีระบบตรวจสอบพบว่ามีการนำเข้าข้อมูลอันเป็นเท็จ
+    </small>
+    <section>
+      <ion-button *ngIf="!hasImage" size="small" color="secondary" (click)="goToCompanyRegister('นิติบุคคล')">ข้ามขั้นตอนนี้</ion-button>
+      <ion-button routerLink="/auth" size="small" color="danger">ยกเลิก</ion-button>
+      <ion-button *ngIf="hasImage" size="small" color="primary" (click)="goToRegister()">ตกลง</ion-button>
+    </section>
+  </div>
+  <input class="none-display" type="file" *ngIf="usePicker" #filePicker (change)="onFileChosen($event)" />
+</ion-content>

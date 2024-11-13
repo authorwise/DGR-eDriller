@@ -1,0 +1,36 @@
+<ion-tabs>
+
+    <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="homes" class="custom-footermenu-color">
+            <i nz-icon nzType="home" nzTheme="fill"></i>
+            <ion-label>หน้าหลัก</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="my-request-forms" class="custom-footermenu-color" [disabled]="certificateExpire">
+            <i nz-icon nzType="reconciliation" nzTheme="outline"></i>
+            <ion-label>คำขอ</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="abouts" class="custom-footermenu-color">
+            <i nz-icon nzType="menu" nzTheme="outline"></i>
+            <ion-label>เกี่ยวกับฉัน</ion-label>
+        </ion-tab-button>
+    </ion-tab-bar>
+    <!-- <ion-tab-bar slot="bottom">
+    <ion-tab-button routerLink="/tabs/dgr/homes" class="custom-footermenu-color">
+      <i nz-icon nzType="home" nzTheme="fill"></i>
+      <ion-label>หน้าหลัก</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button routerLink="/tabs/dgr/my-request-forms" class="custom-footermenu-color">
+      <i nz-icon nzType="reconciliation" nzTheme="outline"></i>
+      <ion-label>คำขอ</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button routerLink="/tabs/dgr/abouts" class="custom-footermenu-color">
+      <i nz-icon nzType="menu" nzTheme="outline"></i>
+      <ion-label>เกี่ยวกับฉัน</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar> -->
+
+</ion-tabs>

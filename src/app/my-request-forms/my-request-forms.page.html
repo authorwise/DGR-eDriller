@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/tabs/dgr/homes"></ion-back-button>
+    </ion-buttons>
+    <ion-title no-border-top>{{ mainMenu }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" pullMin="100" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="ลากลงอีกเพื่อดึงข้อมูลใหม่ทั้งหมด..."
+      refreshingSpinner="circles"
+      refreshingText="กำลังดึงข้อมูล..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-col *ngFor="let item of cacheDatas">
+    <ion-card class="atw-list-big">
+      <ion-item
+        (click)="onSelectedList(item)"
+        routerDirection="forward"
+        lines="full"
+      >
+        <ion-img [src]="iconList" slot="start"></ion-img>
+        <div>
+          <!-- <p class="txt-blue">คำขอรับใบอนุญาตเจาะน้ำบาดาลหรือใช้น้ำบาดาล</p> -->
+          <p class="txt-blue">{{item.requestName}}</p>
+          <p *ngIf="item.processDefID==='nb1'">
+            เลขที่คำขอ : {{ item.requestNo }}
+          </p>
+          <p>สถานะ : {{item.activityName}}</p>
+          <p>
+            ผู้ดำเนินการ :
+            {{curentUser===item.gwDrillerUsername?'ช่างเจาะน้ำบาดาล':'เจ้าหน้าที่ตรวจสอบข้อมูล'
+            }}
+          </p>
+        </div>
+      </ion-item>
+      <div class="atw-list-big-footer">
+        <small>วันที่สร้าง : {{getDataFormat(item.dateCreated)}}</small>
+        <small>อัพเดทล่าสุด : {{getDataFormat(item.dateModified,true)}}</small>
+      </div>
+    </ion-card>
+  </ion-col>
+  <div *ngIf="cacheDatas.length<=0">ไม่มีรายการรอดำเนินงาน</div>
+  <nz-pagination
+    *ngIf="!isLoading"
+    [(nzPageIndex)]="currentPage"
+    (nzPageIndexChange)="changePage($event)"
+    [(nzPageSize)]="sendParam.pageSize"
+    [nzHideOnSinglePage]="true"
+    [nzTotal]="totalList"
+  ></nz-pagination>
+  <ion-card *ngIf="isLoading" class="atw-list-big">
+    <nz-skeleton [nzActive]="true"></nz-skeleton>
+  </ion-card>
+  <nz-empty *ngIf="cacheDatas.length<0 && !isLoading"></nz-empty>
+</ion-content>

@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>นบ./4 ข้อมูลท่อกรุ</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button  (click)="onCancel()">
+        <ion-icon slot="icon-only" name="close"></ion-icon> ปิด
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true">
+  <form nz-form (ngSubmit)="submitForm()" [formGroup]="validateForm">
+    <app-atwformgroup
+      [elements]="formObjElm.elements"
+      [validateForm]="validateForm"
+      [stepValidateForm]="stepValidateForm[0]"
+      [preFetch]="preFetch"
+      [formHook]="formHook"
+    ></app-atwformgroup>
+    <div class="padding-15">
+      <div nz-row [nzGutter]="[8,8]">
+        <div nz-col nzXs="24">
+          <button
+            nz-button
+            class="login-form-button login-form-margin"
+            [nzType]="'primary'"
+            type="submit"
+            nzBlock
+          >
+            บันทึก
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ion-content>

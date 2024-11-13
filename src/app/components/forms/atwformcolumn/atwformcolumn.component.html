@@ -1,0 +1,26 @@
+<div
+  [className]="!isVisible ? 'none-display' : ''"
+  *ngFor="let cols of columnElement.elements"
+  [id]="columnElement.properties.id"
+>
+  <div
+    [className]="cols.elements.length > 1 ? 'section-form-col' : ''"
+    nz-row
+    *ngIf="cols.elements"
+  >
+    <div nz-col *ngFor="let col of cols.elements" nzSpan="24">
+      <app-atwformcontrol
+        [validateForm]="validateForm"
+        [element]="col"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        [stepValidateForm]="stepValidateForm"
+        [mapPickerBind]="mapPickerBind"
+        [spreadsheetPickerBind]="spreadsheetPickerBind"
+        [visibilityControl]="columnElement.properties.visibilityControl"
+        [visibilityValue]="columnElement.properties.visibilityValue"
+        [beforeLabel]="beforeLabel"
+      ></app-atwformcontrol>
+    </div>
+  </div>
+</div>

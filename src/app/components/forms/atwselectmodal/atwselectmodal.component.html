@@ -1,0 +1,97 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>{{ properties.label }}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button  (click)="onCancel()">
+        <ion-icon slot="icon-only" name="close"></ion-icon> ยกเลิก
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <form nz-form (ngSubmit)="submitForm()">
+      <nz-form-item class="ion-padding-min">
+        <nz-input-group [nzSuffix]="suffixIconSearch">
+          <input
+            [(ngModel)]="inputValue"
+            type="text"
+            nz-input
+            name="search"
+            placeholder="พิมพ์ keyword ข้อความ"
+          />
+        </nz-input-group>
+        <ng-template #suffixIconSearch>
+          <i nz-icon nzType="search" (click)="submitForm()"></i>
+        </ng-template>
+      </nz-form-item>
+    </form>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing..."
+    >
+    </ion-refresher-content>
+  </ion-refresher> -->
+  <ion-list>
+      <ion-item
+        [color]="backVal === option[binderProp.idColumn] ? 'primary' : 'light'"
+        *ngFor="let option of cacheOptions"
+        button
+        (click)="buttonClick(option)"
+      >
+        <nz-skeleton
+          *ngIf="!option"
+          [nzAvatar]="true"
+          [nzParagraph]="{ rows: 1 }"
+        ></nz-skeleton>
+        <ion-icon
+          *ngIf="backVal === option[binderProp.idColumn]"
+          name="checkmark-circle"
+          slot="end"
+        ></ion-icon>
+        <ion-label>
+          <highlighted-text
+            [needle]="searchVal"
+            [haystack]="option[binderProp.labelColumn]"
+          ></highlighted-text>
+        </ion-label>
+      </ion-item>
+      <nz-list-empty *ngIf="options.length === 0"></nz-list-empty>
+  </ion-list>
+  <!-- <div class="plServiceItemsList-listContainer">
+    <cdk-virtual-scroll-viewport
+      [itemSize]="45"
+      class="plServiceItemsList-listViewPort"
+       autosize
+    >
+      <nz-list [nzLoading]="isLoading">
+        <nz-list-item *cdkVirtualFor="let option of cacheOptions">
+          <ion-item button (click)="buttonClick(option)">
+            <nz-skeleton
+              *ngIf="!option"
+              [nzAvatar]="true"
+              [nzParagraph]="{ rows: 1 }"
+            ></nz-skeleton>
+            <ion-icon
+              *ngIf="backVal === option[binderProp.idColumn]"
+              name="checkmark-circle"
+              slot="end"
+            ></ion-icon>
+            <ion-label>
+              <highlighted-text
+                [needle]="searchVal"
+                [haystack]="option[binderProp.labelColumn]"
+              ></highlighted-text>
+            </ion-label>
+          </ion-item>
+        </nz-list-item>
+        <nz-list-empty *ngIf="options.length === 0"></nz-list-empty>
+      </nz-list>
+    </cdk-virtual-scroll-viewport>
+  </div> -->
+</ion-content>

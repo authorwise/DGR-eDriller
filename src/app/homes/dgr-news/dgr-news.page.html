@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/tabs/dgr/homes"></ion-back-button>
+    </ion-buttons>
+    <ion-title no-border-top>{{ menuTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center" *ngIf="isLoading">
+    <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
+  </div>
+  <ion-list>
+    <div *ngFor="let m of rssContents" nz-row>
+      <div nz-col class="gutter-row atw-list-feed" [nzSpan]="24">
+        <ion-item
+          (click)="openNews(m.link)"
+          routerDirection="forward"
+          lines="full"
+        >
+          <img [src]="m.img" class="ion-pr-5" width="100" />
+          <p class="ion-text-wrap">
+            <span class="txt-blue">- {{ m.title }}</span> #{{ m.date }}
+          </p>
+        </ion-item>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>

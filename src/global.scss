@@ -1,0 +1,540 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import 'assets/css/saraban.css';
+@import 'assets/css/core.css';
+
+/* Basic CSS for apps built with Ionic */
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+@import 'assets/css/customtheme.css';
+:root {
+  --ion-safe-area-top: 20px;
+  --ion-safe-area-bottom: 22px;
+}
+form,
+input,
+optgroup,
+select,
+textarea,
+app-atwselect,
+app-atwpopupselectbox {
+  width: 100%;
+}
+.ant-form-item .ant-form-item-label {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  white-space: initial;
+  text-align: left;
+}
+.ant-form-item .ant-form-item-label > label,
+.ant-btn-background-ghost.ant-btn-link {
+  color: var(--ion-link-color);
+}
+input,
+textarea {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d9d9d9;
+  border-radius: 3px;
+  padding: 3px 10px;
+}
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  outline-offset: -2px;
+  outline: var(--ion-color-danger) auto 1px;
+  border-color: var(--ion-color-danger);
+}
+div.ant-form-item-explain.ng-star-inserted {
+  font-size: 12px;
+}
+/* ant config */
+.ant-btn-primary {
+  background-color: var(--ion-color-primary);
+  border-color: var(--ion-color-primary);
+}
+.ant-form-item {
+  margin: 0;
+}
+
+/* util */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--ion-head-color);
+  margin: 0;
+}
+.text-center {
+  text-align: center;
+}
+.logo-warp {
+  width: 130px;
+  overflow: hidden;
+  display: inline-block;
+}
+.ant-btn-round {
+  border-radius: 3px;
+}
+.margin-top-15 {
+  margin-top: 15px;
+}
+input.ng-touched.ng-invalid {
+  border-color: var(--ion-color-danger);
+}
+ion-tab-bar,
+ion-tab-bar ion-tab-button,
+ion-tab-bar ion-label {
+  background-color: var(--ion-color-primary);
+  font-size: 12px;
+  color: #fff;
+}
+ion-tab-bar ion-icon,
+ion-tab-bar .anticon {
+  font-size: 20px;
+}
+ion-header ion-title {
+  letter-spacing: inherit;
+}
+ion-label {
+  font-family: var(--ion-font-family);
+}
+ion-tab-button.ion-activatable.ion-selectable.ion-focusable.tab-selected,
+ion-tab-bar ion-tab-button:hover {
+  ion-icon,
+  i.anticon,
+  ion-label {
+    color: #6bb4dd;
+  }
+}
+.header-logo {
+  width: 48px;
+}
+.margin-top-10 {
+  margin-top: 10px;
+}
+@media (any-hover: hover) {
+  a:hover {
+    color: rgba(255, 255, 255, 0.6) !important;
+  }
+}
+.hidden-block {
+  max-height: 1px;
+}
+span.ant-radio + * {
+  width: 94%;
+  display: inline-block;
+}
+.ant-radio-wrapper {
+  margin: 0;
+  line-height: 1.5715;
+  list-style: none;
+  white-space: pre-wrap;
+}
+.ant-radio {
+  margin: 0;
+  list-style: none;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: top;
+  margin-top: 5px;
+  outline: 0;
+}
+.card-content-md h3.headform,
+.card-content-ios h3.headform,
+.card-content-md div.headform b,
+.card-content-ios div.headform b {
+  font-size: 17px;
+  margin: 10px 0;
+  display: block;
+}
+.card-content-ios {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 10px;
+  -webkit-padding-start: 10px;
+  padding-inline-start: 10px;
+  -webkit-padding-end: 10px;
+  padding-inline-end: 10px;
+}
+ion-card {
+  margin: 10px;
+  background: #fff;
+}
+.ant-form-item-label > label {
+  height: auto;
+  margin: 5px 0 10px !important;
+}
+.html-display {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 10px 5px;
+}
+app-atwradio,
+app-atwdatepicker {
+  width: 100%;
+}
+nz-radio-group.ng-invalid label span,
+.atw-select-invalid label.ant-checkbox-wrapper {
+  color: var(--ion-color-danger);
+}
+nz-radio-group.ng-invalid label .ant-radio-inner {
+  border-color: var(--ion-color-danger);
+}
+.danger-txt {
+  color: var(--ion-color-danger);
+}
+.none-display {
+  display: none;
+}
+app-atwformgroup.nb1-step-1,
+app-atwformgroup.nb1-step-2,
+app-atwformgroup.nb1-step-3,
+app-atwformgroup.nb1-step-4,
+app-atwformgroup.nb1-step-5 {
+  display: none;
+}
+.step-to-1 .nb1-step-1,
+.step-to-2 .nb1-step-2,
+.step-to-3 .nb1-step-3,
+.step-to-4 .nb1-step-4,
+.step-to-5 .nb1-step-5 {
+  display: block;
+}
+.padding-15 {
+  padding: 15px;
+}
+.padding-b-0 {
+  padding-bottom: 0;
+}
+.formhasstep .ant-steps-item-content div {
+  display: none;
+}
+.ant-steps {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAFCAYAAACEhIafAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAABQAAAAAvahkEAAAAEklEQVQIHWPg92n8z8QABGgEACi6AeTwo5YDAAAAAElFTkSuQmCC');
+  background-repeat: repeat-x;
+  background-position: center;
+}
+.formhasstep .ant-steps-item-wait .ant-steps-item-icon {
+  border-color: var(--ion-color-primary);
+}
+.formhasstep .ant-steps-item-wait .ant-steps-item-icon > .ant-steps-icon {
+  color: var(--ion-color-primary);
+}
+.formhasstep .ant-steps-item-process .ant-steps-item-icon {
+  background: var(--ion-color-primary);
+  border-color: var(--ion-color-primary);
+  font-weight: bold;
+}
+.formhasstep .ant-steps-small .ant-steps-item:last-child .ant-steps-item-icon {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 24px;
+}
+ion-back-button {
+  color: var(--color-white);
+}
+ion-card {
+  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+  --color: #666666;
+  margin: 5px 10px;
+  transform: translateZ(0px);
+  font-size: 14px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
+  border-radius: 3px;
+  transition: transform 500ms cubic-bezier(0.12, 0.72, 0.29, 1) 0s,
+    -webkit-transform 500ms cubic-bezier(0.12, 0.72, 0.29, 1) 0s;
+}
+@media only screen and (min-width: 600px) {
+  ion-card.main-menu-card {
+    max-height: 200px !important;
+  }
+  .icon-main-menu,
+  .icon-main-menu img {
+    max-height: 120px !important;
+    height: 200px;
+  }
+  .atw-list-big ion-item {
+    --padding-start: 20px;
+  }
+  .atw-list-big ion-img {
+    margin-right: 20px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  ion-card {
+    margin: 5px 8px;
+  }
+  .formhasstep .ant-steps-horizontal.ant-steps-label-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .formhasstep
+    .ant-steps-horizontal.ant-steps-label-horizontal
+    .ant-steps-item {
+    display: flex;
+  }
+  .formhasstep .ant-steps-item-container {
+    display: flex;
+    align-items: center;
+  }
+  .formhasstep
+    .ant-steps-horizontal.ant-steps-label-horizontal
+    > .ant-steps-item
+    > .ant-steps-item-container
+    > .ant-steps-item-tail::after {
+    display: none;
+  }
+}
+.ant-radio,
+.ant-radio-group,
+.ant-radio-wrapper {
+  font-size: 16px;
+}
+.ant-form-item-label > label {
+  font-size: 16.5px;
+}
+body,
+.ant-form output,
+.ant-form-item {
+  font-size: 16px;
+  line-height: 1.5715;
+  background-color: #fff;
+  font-feature-settings: 'tnum';
+}
+.ant-form-item {
+  background: transparent;
+}
+span.ant-radio + * {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+span.ant-radio + * {
+  padding-right: 0;
+  padding-left: 8px;
+}
+.section-form-col {
+  margin-bottom: 15px;
+}
+.form-item-spece {
+  margin-bottom: 5px;
+}
+.ant-list ion-item {
+  background-color: #fff;
+  width: 100%;
+}
+form.fixed-search {
+  position: fixed;
+  z-index: 999;
+}
+.padding-top-32 {
+  padding-top: 32px;
+}
+.margin-top-32 {
+  margin-top: 32px;
+}
+nz-list .item-native,
+ion-item {
+  background: #fff;
+}
+.green-color {
+  color: green;
+}
+.selected-itemlist {
+  width: 100%;
+  height: 600px;
+}
+.selected-itemlist-root {
+  width: 100%;
+  min-height: 400px;
+  height: 100%;
+  max-height: 100%;
+}
+ion-content {
+  position: relative;
+}
+nz-list-item.ant-list-item {
+  width: 100%;
+  padding: 0;
+}
+
+cdk-virtual-scroll-viewport,
+.cdk-virtual-scroll-content-wrapper {
+  height: 100vh;
+}
+app-atwmappicker {
+  display: block;
+  width: 100%;
+}
+.d-block {
+  display: block;
+}
+.map {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  background-color: transparent;
+
+  opacity: 0;
+  transition: opacity 150ms ease-in;
+}
+.map.visible {
+  opacity: 1;
+}
+.atw-select-invalid button.ant-btn,
+.atw-select-invalid label.ant-checkbox-wrapper span.ant-checkbox-inner {
+  border: 1px solid var(--ion-color-danger);
+  color: var(--ion-color-danger);
+}
+input.ng-invalid {
+  border: 1px solid var(--ion-color-danger);
+}
+.popuplistselect ion-item {
+  max-height: 93px;
+  overflow: hidden;
+}
+.ion-padding-min {
+  padding: 5px;
+}
+ion-card.atw-list-big {
+  height: 174px;
+}
+.ant-divider-horizontal {
+  margin: 5px;
+}
+.ion-pl-5 {
+  padding-left: 5px;
+}
+.ion-pr-5 {
+  padding-right: 5px;
+}
+.ion-pl-10 {
+  padding-left: 10px;
+}
+.ion-pr-10 {
+  padding-right: 10px;
+}
+
+.icon-main-menu {
+  width: 70%;
+  margin: 0 auto;
+  padding: 0;
+}
+.atw-list-menu {
+  height: 70px;
+}
+.atw-list-menu ion-item p {
+  margin: 0;
+  font-size: 15px;
+}
+.atw-list-menu ion-item {
+  background: #ffffff;
+  --min-height: 68px;
+  --background: #ffffff;
+}
+.atw-list-big ion-item {
+  --background: #ffffff;
+}
+.atw-list-big ion-item p:first-child {
+  margin-top: 5px;
+  font-size: 16px;
+}
+.atw-list-big ion-item p:last-child {
+  margin-bottom: 10px;
+}
+.atw-list-big ion-item p {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+p.ion-text-center.home-menu-label {
+  font-size: 100%;
+  font-weight: bold;
+  color: #006400;
+}
+p.fs-14 {
+  font-size: 14px;
+}
+p.txt-blue {
+  color: #006400;
+}
+ion-card.main-menu-card {
+  min-height: 160px;
+  max-height: 200px;
+}
+nz-pagination {
+  text-align: center;
+}
+
+.atw-list-big-footer {
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  color: #468890;
+  font-style: italic;
+}
+.atw-list-big ion-item {
+  --min-height: 119px;
+}
+.atw-list-big ion-item {
+  --padding-start: 10px;
+}
+.atw-list-big ion-img {
+  margin-right: 10px;
+}
+ion-fab {
+  z-index: 999;
+}
+.swal2-title {
+  font-family: var(--ion-font-family);
+}
+.link-to-cam .overlay-img,
+.link-to-cam span {
+  display: none;
+}
+.link-to-cam.has-cardid .overlay-img {
+  height: 100vw;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.link-to-cam.has-cardid span {
+  font-size: 40px;
+  font-weight: bold;
+  color: #fff;
+  z-index: 999;
+  top: 72px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  display: block;
+}

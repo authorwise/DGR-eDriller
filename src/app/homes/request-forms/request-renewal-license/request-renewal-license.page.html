@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        [text]=""
+        [defaultHref]="'/tabs/dgr/homes/request-forms'"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>คำขอต่ออายุใบอนุญาต</ion-title>
+  </ion-toolbar>
+  <ion-segment mode="ios" color="light" (ionChange)="segmentChanged($event)" [(ngModel)]="setSegment">
+    <ion-segment-button value="drill">
+      <ion-label>ใบอนุญาตเจาะน้ำบาดาล</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="usage">
+      <ion-label>ใบอนุญาตใช้น้ำบาดาล</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+    <ion-col *ngFor="let item of datalist">
+      <ion-card class="atw-list-big">
+        <ion-item [routerLink]="'/home'" routerDirection="forward" lines="full">
+          <!-- <ion-img *ngIf=" tran.tranType == 'R'" [src]="iconDrill9" slot="start"></ion-img> -->
+          <ion-img *ngIf=" setSegment == 'drill'" [src]="iconDrill" slot="start"></ion-img>
+          <ion-img *ngIf=" setSegment == 'usage'" [src]="iconUsage" slot="start"></ion-img>
+          <div>
+            <p class="txt-blue">{{item.licenseType}}น้ำบาดาล</p>
+            <p>เลขที่ใบอนุญาต : {{item.licenseNo}}</p>
+            <p>ผู้รับใบอนุญาต : {{item.licenseName}}</p>
+          </div>
+        </ion-item>
+        <div class="atw-list-big-footer">
+          <small>สิ้นอายุวันที่ : {{getDataFormat(item.licenseExpireDate)}}</small>
+        </div>
+      </ion-card>
+    </ion-col>
+</ion-content>

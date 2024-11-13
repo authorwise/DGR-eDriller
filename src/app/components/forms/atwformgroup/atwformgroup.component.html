@@ -1,0 +1,25 @@
+<ion-card>
+  <ion-card-content>
+    <div *ngFor="let section of sectionData">
+      <div
+        [className]="
+          section.properties.id === 'sectionHidden' ? 'hidden-block' : ''
+        "
+      >
+        <h3 class="headform" *ngIf="section.properties.label != ''">
+          {{ section.properties.label }}
+        </h3>
+        <app-atwformcolumn
+          [validateForm]="validateForm"
+          [elements]="section"
+          [preFetch]="preFetch"
+          [stepValidateForm]="stepValidateForm"
+          [formHook]="formHook"
+          [mapPickerBind]="mapPickerBind"
+          [spreadsheetPickerBind]="spreadsheetPickerBind"
+          [beforeLabel]="beforeLabel"
+        ></app-atwformcolumn>
+      </div>
+    </div>
+  </ion-card-content>
+</ion-card>

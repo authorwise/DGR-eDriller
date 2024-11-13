@@ -1,0 +1,737 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="" [defaultHref]="returnUrl"></ion-back-button>
+    </ion-buttons>
+    <ion-title>รายงาน นบ./3 นบ./4 นบ./5</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="formhasstep" [scrollEvents]="true">
+  <div class="padding-15 padding-b-0">
+    <nz-steps
+      nzDirection="horizontal"
+      nzSize="small"
+      [nzCurrent]="currentStep-1"
+    >
+      <nz-step nzTitle=""></nz-step>
+      <nz-step nzTitle=""></nz-step>
+      <nz-step nzTitle=""></nz-step>
+      <nz-step nzTitle=""></nz-step>
+      <nz-step nzTitle=""></nz-step>
+    </nz-steps>
+  </div>
+
+  <div [className]="'steps-content step-to-'+(currentStep)">
+    <form nz-form (ngSubmit)="submitForm()" [formGroup]="validateForm">
+      <!-- Step1 -->
+      <app-atwformgroup
+        [elements]="formObjElm.elements"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-1"
+      ></app-atwformgroup>
+      <!-- Step2 -->
+      <app-atwformgroup
+        [elements]="formObjElmNBT345.elements"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-2"
+      ></app-atwformgroup>
+
+      <!-- Step3 -->
+      <app-atwformgroup
+        [elements]="formObjElmNBT3.elements"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-3"
+      ></app-atwformgroup>
+
+      <ion-card *ngIf="currentStep===3" nzBlock>
+        <ion-card-content>
+          <div nz-row [nzGutter]="[8,8]">
+            <div nz-col nzXs="24">
+              <button
+                nz-button
+                class="login-form-button login-form-margin"
+                [nzType]="'primary'"
+                type="button"
+                (click)="onPickNBT3sub(null)"
+              >
+                <ion-icon name="add" slot="start"></ion-icon>
+                <ion-label> เพิ่มข้อมูล</ion-label>
+              </button>
+              <nz-table #nzTable [nzData]="listOfNBT3sub" nzTableLayout="fixed">
+                <thead>
+                  <tr>
+                    <th nzWidth="60px"></th>
+                    <th>วันที่</th>
+                    <th>รายงานการปฏิบัติงาน</th>
+                    <th>ความลึก (เมตร)</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of nzTable.data">
+                    <tr>
+                      <td
+                        [nzExpand]="expandSet.has(data.id)"
+                        (nzExpandChange)="onExpandChange(data.id, $event)"
+                      ></td>
+                      <td>{{ data.reportDate }}</td>
+                      <td>{{ data.detail }}</td>
+                      <td>{{ data.depth }}</td>
+                      <td>
+                        <a (click)="onPickNBT3sub(data)">แก้ไข</a>
+                      </td>
+                    </tr>
+                    <tr [nzExpand]="expandSet.has(data.id)">
+                      <td>
+                        <div *ngIf="data.remark!==''">
+                          <span>หมายเหตุ : {{ data.remark }}</span>
+                        </div>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </nz-table>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Step4 -->
+      <app-atwformgroup
+        [elements]="formObjElmNBT4.elements.slice(0,3)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-4"
+      ></app-atwformgroup>
+
+      <ion-card *ngIf="currentStep===4" nzBlock>
+        <ion-card-content>
+          <h3 class="headform">ข้อมูลท่อกรุ</h3>
+          <div nz-row [nzGutter]="[8,8]">
+            <div nz-col nzXs="24">
+              <button
+                nz-button
+                class="login-form-button login-form-margin"
+                [nzType]="'primary'"
+                type="button"
+                (click)="onPickNBT4Pipe(null)"
+              >
+                <ion-icon name="add" slot="start"></ion-icon>
+                <ion-label> เพิ่มข้อมูล</ion-label>
+              </button>
+              <nz-table
+                #nzTable
+                [nzData]="listOfNBT4Pipe"
+                nzTableLayout="fixed"
+              >
+                <thead>
+                  <tr>
+                    <th>ขนาดท่อกรุ</th>
+                    <th>จากระยะ (เมตร)</th>
+                    <th>ถึง (เมตร)</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of nzTable.data">
+                    <tr>
+                      <td>{{ data.pipeSize }}</td>
+                      <td>{{ data.pipeFrom }}</td>
+                      <td>{{ data.pipeTo }}</td>
+                      <td>
+                        <a (click)="onPickNBT4Pipe(data)">แก้ไข</a>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </nz-table>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngIf="currentStep===4" nzBlock>
+        <ion-card-content>
+          <h3 class="headform">ข้อมูลขนาดท่อกรองหรือท่อเซาะร่อง</h3>
+          <div nz-row [nzGutter]="[8,8]">
+            <div nz-col nzXs="24">
+              <button
+                nz-button
+                class="login-form-button login-form-margin"
+                [nzType]="'primary'"
+                type="button"
+                (click)="onPickNBT4Filter(null)"
+              >
+                <ion-icon name="add" slot="start"></ion-icon>
+                <ion-label> เพิ่มข้อมูล</ion-label>
+              </button>
+              <nz-table
+                #nzTable
+                [nzData]="listOfNBT4Filter"
+                nzTableLayout="fixed"
+              >
+                <thead>
+                  <tr>
+                    <th>ขนาดท่อกรองหรือท่อเซาะร่อง</th>
+                    <th>จากระยะ (เมตร)</th>
+                    <th>ถึง (เมตร)</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of nzTable.data">
+                    <tr>
+                      <td>{{ data.filterSize }}</td>
+                      <td>{{ data.filterFrom }}</td>
+                      <td>{{ data.filterTo }}</td>
+                      <td>
+                        <a (click)="onPickNBT4Filter(data)">แก้ไข</a>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </nz-table>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <app-atwformgroup
+        [elements]="formObjElmNBT4.elements.slice(4,9)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-4"
+      ></app-atwformgroup>
+
+      <ion-card *ngIf="currentStep===4" nzBlock>
+        <ion-card-content>
+          <h3 class="headform">
+            รายละเอียดการทดสอบขณะทำการสูบน้ำจากบ่อน้ำบาดาล
+          </h3>
+          <div nz-row [nzGutter]="[8,8]">
+            <div nz-col nzXs="24">
+              <button
+                nz-button
+                class="login-form-button login-form-margin"
+                [nzType]="'primary'"
+                type="button"
+                (click)="onPickNBT4Pump(null)"
+              >
+                <ion-icon name="add" slot="start"></ion-icon>
+                <ion-label> เพิ่มข้อมูล</ion-label>
+              </button>
+              <nz-table
+                #nzTable
+                [nzData]="listOfNBT4Pump"
+                nzTableLayout="fixed"
+              >
+                <thead>
+                  <tr>
+                    <th>เวลา</th>
+                    <th>เวลาหลังการสูบน้ำ (นาที)</th>
+                    <th>ระดับน้ำในบ่อ (เมตร)</th>
+                    <th>ระยะน้ำลด (เมตร)</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of nzTable.data">
+                    <tr>
+                      <td>{{ data.pumpTime }}</td>
+                      <td>{{ data.pumpTimeAfter }}</td>
+                      <td>{{ data.pondLevel }}</td>
+                      <td>{{ data.reducedWater }}</td>
+                      <td>
+                        <a (click)="onPickNBT4Pump(data)">แก้ไข</a>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </nz-table>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <app-atwformgroup
+        [elements]="formObjElmNBT4.elements.slice(10,11)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-4"
+      ></app-atwformgroup>
+
+      <ion-card *ngIf="currentStep===4" nzBlock>
+        <ion-card-content>
+          <h3 class="headform">รายละเอียดระยะน้ำคืนตัว</h3>
+          <div nz-row [nzGutter]="[8,8]">
+            <div nz-col nzXs="24">
+              <button
+                nz-button
+                class="login-form-button login-form-margin"
+                [nzType]="'primary'"
+                type="button"
+                (click)="onPickNBT4Recovery(null)"
+              >
+                <ion-icon name="add" slot="start"></ion-icon>
+                <ion-label> เพิ่มข้อมูล</ion-label>
+              </button>
+              <nz-table
+                #nzTable
+                [nzData]="listOfNBT4Recovery"
+                nzTableLayout="fixed"
+              >
+                <thead>
+                  <tr>
+                    <th>เวลา</th>
+                    <th>เวลาหลังการหยุดสูบน้ำ (นาที)</th>
+                    <th>ระดับน้ำในบ่อ (เมตร)</th>
+                    <th>ระยะน้ำลด (เมตร)</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of nzTable.data">
+                    <tr>
+                      <td>{{ data.recoveryTime }}</td>
+                      <td>{{ data.pumpTimeAfter }}</td>
+                      <td>{{ data.pondLevel }}</td>
+                      <td>{{ data.recoveryWater }}</td>
+                      <td>
+                        <a (click)="onPickNBT4Recovery(data)">แก้ไข</a>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </nz-table>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <app-atwformgroup
+        [elements]="formObjElmNBT4.elements.slice(12,13)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-4"
+      ></app-atwformgroup>
+
+      <!-- Step5 -->
+      <app-atwformgroup
+        [elements]="formObjElmNBT5.elements.slice(0,3)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-5"
+      ></app-atwformgroup>
+
+      <ion-card *ngIf="currentStep===5" nzBlock>
+        <ion-card-content>
+          <h3 class="headform">2) ข้อมูลหลุมเจาะ</h3>
+          <div nz-row [nzGutter]="[8,8]">
+            <div nz-col nzXs="24">
+              <button
+                nz-button
+                class="login-form-button login-form-margin"
+                [nzType]="'primary'"
+                type="button"
+                (click)="onPickNBT5Hole(null)"
+              >
+                <ion-icon name="add" slot="start"></ion-icon>
+                <ion-label> เพิ่มข้อมูล</ion-label>
+              </button>
+              <nz-table
+                #nzTable
+                [nzData]="listOfNBT5Hole"
+                nzTableLayout="fixed"
+              >
+                <thead>
+                  <tr>
+                    <th>ขนาดหลุมเจาะ (มม.)</th>
+                    <th>จากระยะ (เมตร)</th>
+                    <th>ถึง (เมตร)</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of nzTable.data">
+                    <tr>
+                      <td>{{ data.holeSize }}</td>
+                      <td>{{ data.holeFrom }}</td>
+                      <td>{{ data.holeTo }}</td>
+                      <td>
+                        <a (click)="onPickNBT5Hole(data)">แก้ไข</a>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </nz-table>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <app-atwformgroup
+        [elements]="formObjElmNBT5.elements.slice(4,7)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-5"
+      ></app-atwformgroup>
+
+      <ion-card *ngIf="currentStep===5" nzBlock>
+        <ion-card-content>
+          <div nz-row [nzGutter]="[8,8]">
+            <div nz-col nzXs="24">
+              <button
+                nz-button
+                class="login-form-button login-form-margin"
+                [nzType]="'primary'"
+                type="button"
+                (click)="onPickNBT5Pipe(null)"
+              >
+                <ion-icon name="add" slot="start"></ion-icon>
+                <ion-label> เพิ่มข้อมูล</ion-label>
+              </button>
+              <nz-table
+                #nzTable
+                [nzData]="listOfNBT5Pipe"
+                nzTableLayout="fixed"
+              >
+                <thead>
+                  <tr>
+                    <th>ขนาดเส้นผ่าศูนย์กลาง (มม.)</th>
+                    <th>จากระยะ (เมตร)</th>
+                    <th>ถึง (เมตร)</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of nzTable.data">
+                    <tr>
+                      <td>{{ data.pipeDiameter }}</td>
+                      <td>{{ data.pipeFrom }}</td>
+                      <td>{{ data.pipeTo }}</td>
+                      <td>
+                        <a (click)="onPickNBT5Pipe(data)">แก้ไข</a>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </nz-table>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <app-atwformgroup
+        [elements]="formObjElmNBT5.elements.slice(8,9)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-5"
+      ></app-atwformgroup>
+
+      <ion-card *ngIf="currentStep===5" nzBlock>
+        <ion-card-content>
+          <div nz-row [nzGutter]="[8,8]">
+            <div nz-col nzXs="24">
+              <button
+                nz-button
+                class="login-form-button login-form-margin"
+                [nzType]="'primary'"
+                type="button"
+                (click)="onPickNBT5Gouge(null)"
+              >
+                <ion-icon name="add" slot="start"></ion-icon>
+                <ion-label> เพิ่มข้อมูล</ion-label>
+              </button>
+              <nz-table
+                #nzTable
+                [nzData]="listOfNBT5Gouge"
+                nzTableLayout="fixed"
+              >
+                <thead>
+                  <tr>
+                    <th>ขนาดเส้นผ่าศูนย์กลาง (มม.)</th>
+                    <th>ขนาดร่อง (มม.)</th>
+                    <th>จากระยะ (เมตร)</th>
+                    <th>ถึง (เมตร)</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of nzTable.data">
+                    <tr>
+                      <td>{{ data.gougeDiameter }}</td>
+                      <td>{{ data.gougeSize }}</td>
+                      <td>{{ data.gougeFrom }}</td>
+                      <td>{{ data.gougeTo }}</td>
+                      <td>
+                        <a (click)="onPickNBT5Gouge(data)">แก้ไข</a>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </nz-table>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <app-atwformgroup
+        [elements]="formObjElmNBT5.elements.slice(10,11)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-5"
+      ></app-atwformgroup>
+
+      <ion-card *ngIf="currentStep===5" nzBlock>
+        <ion-card-content>
+          <div nz-row [nzGutter]="[8,8]">
+            <div nz-col nzXs="24">
+              <button
+                nz-button
+                class="login-form-button login-form-margin"
+                [nzType]="'primary'"
+                type="button"
+                (click)="onPickNBT5Filter(null)"
+              >
+                <ion-icon name="add" slot="start"></ion-icon>
+                <ion-label> เพิ่มข้อมูล</ion-label>
+              </button>
+              <nz-table
+                #nzTable
+                [nzData]="listOfNBT5Filter"
+                nzTableLayout="fixed"
+              >
+                <thead>
+                  <tr>
+                    <th>ขนาดเส้นผ่าศูนย์กลาง (มม.)</th>
+                    <th>ขนาดร่อง (มม.)</th>
+                    <th>จากระยะ (เมตร)</th>
+                    <th>ถึง (เมตร)</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of nzTable.data">
+                    <tr>
+                      <td>{{ data.filterDiameter }}</td>
+                      <td>{{ data.filterSize }}</td>
+                      <td>{{ data.filterFrom }}</td>
+                      <td>{{ data.filterTo }}</td>
+                      <td>
+                        <a (click)="onPickNBT5Filter(data)">แก้ไข</a>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </nz-table>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <app-atwformgroup
+        [elements]="formObjElmNBT5.elements.slice(12,13)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-5"
+      ></app-atwformgroup>
+
+      <ion-card *ngIf="currentStep===5" nzBlock>
+        <ion-card-content>
+          <h3 class="headform">9) การผนึกข้างบ่อเหนือกรวดกรุ</h3>
+          <div nz-row [nzGutter]="[8,8]">
+            <div nz-col nzXs="24">
+              <button
+                nz-button
+                class="login-form-button login-form-margin"
+                [nzType]="'primary'"
+                type="button"
+                (click)="onPickNBT5SideSeal(null)"
+              >
+                <ion-icon name="add" slot="start"></ion-icon>
+                <ion-label> เพิ่มข้อมูล</ion-label>
+              </button>
+              <nz-table
+                #nzTable
+                [nzData]="listOfNBT5SideSeal"
+                nzTableLayout="fixed"
+              >
+                <thead>
+                  <tr>
+                    <th>ผนึกด้วย</th>
+                    <th>จากระยะ (เมตร)</th>
+                    <th>ถึง (เมตร)</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of nzTable.data">
+                    <tr>
+                      <td>{{ data.sideSealType }}</td>
+                      <td>{{ data.sideSealFrom }}</td>
+                      <td>{{ data.sideSealTo }}</td>
+                      <td>
+                        <a (click)="onPickNBT5SideSeal(data)">แก้ไข</a>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </nz-table>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <app-atwformgroup
+        [elements]="formObjElmNBT5.elements.slice(14,15)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-5"
+      ></app-atwformgroup>
+
+      <ion-card *ngIf="currentStep===4" nzBlock>
+        <ion-card-content>
+          <h3 class="headform">
+            รายการชั้นดินหรือชั้นหินที่เจาะผ่าน
+            (รายงานทุกระยะที่ลักษณะชั้นดินหรือชั้นหินเปลี่ยน)
+          </h3>
+          <div nz-row [nzGutter]="[8,8]">
+            <div nz-col nzXs="24">
+              <button
+                nz-button
+                class="login-form-button login-form-margin"
+                [nzType]="'primary'"
+                type="button"
+                (click)="onPickNBT5Layer(null)"
+              >
+                <ion-icon name="add" slot="start"></ion-icon>
+                <ion-label> เพิ่มข้อมูล</ion-label>
+              </button>
+              <nz-table
+                #nzTable
+                [nzData]="listOfNBT5Layer"
+                nzTableLayout="fixed"
+              >
+                <thead>
+                  <tr>
+                    <th>รายการชั้นดินหรือชั้นหิน</th>
+                    <th>ความลึกจาก (เมตร)</th>
+                    <th>ความลึกถึง (เมตร)</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of nzTable.data">
+                    <tr>
+                      <td>{{ data.layerType }}</td>
+                      <td>{{ data.depthFrom }}</td>
+                      <td>{{ data.depthTo }}</td>
+                      <td>
+                        <a (click)="onPickNBT5Layer(data)">แก้ไข</a>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </nz-table>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <app-atwformgroup
+        [elements]="formObjElmNBT5.elements.slice(16,17)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-5"
+      ></app-atwformgroup>
+
+      <div class="padding-15">
+        <div nz-row [nzGutter]="[8,8]">
+          <div nz-col nzXs="12">
+            <button
+              nz-button
+              class="login-form-button login-form-margin"
+              [nzType]="'primary'"
+              type="button"
+              *ngIf="currentStep>1"
+              nzBlock
+              (click)="prevStep()"
+            >
+              <i nz-icon nzType="left"></i> ย้อนกลับ
+            </button>
+          </div>
+          <div nz-col nzXs="12">
+            <button
+              nz-button
+              class="login-form-button login-form-margin"
+              [nzType]="'primary'"
+              type="button"
+              nzBlock
+              (click)="nextStep()"
+              *ngIf="currentStep<5&&!riskChoice"
+            >
+              ถัดไป <i nz-icon nzType="right"></i>
+            </button>
+          </div>
+          <div nz-col nzXs="24">
+            <button
+              nz-button
+              class="login-form-button login-form-margin"
+              [nzType]="'primary'"
+              type="submit"
+              *ngIf="currentStep===5&&!riskChoice"
+              nzBlock
+            >
+              {{ sendButton }}
+            </button>
+          </div>
+          <div nz-col nzXs="24">
+            <button
+              nz-button
+              class="login-form-button login-form-margin"
+              [nzType]="'primary'"
+              type="button"
+              (click)="sendComplete()"
+              *ngIf="riskChoice"
+              nzBlock
+            >
+              {{ sendButton }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>

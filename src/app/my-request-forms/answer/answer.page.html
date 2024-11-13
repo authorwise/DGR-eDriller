@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        [text]=""
+        [defaultHref]="'/tabs/dgr/my-request-forms'"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>ตอบข้อสงสัย และให้ข้อมูลเพิ่มเติม</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true">
+  <form nz-form (ngSubmit)="submitForm()" [formGroup]="validateForm">
+    <!-- <ion-label color="primary">{{topicQuestion}}</ion-label> -->
+    <app-atwformgroup
+        [elements]="formObjElm.elements"
+        [validateForm]="validateForm"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        [beforeLabel]="beforeLabel"
+      ></app-atwformgroup>
+    <div class="padding-15">
+      <div nz-col nzXs="24">
+        <button
+          nz-button
+          class="login-form-button login-form-margin"
+          [nzType]="'primary'"
+          type="submit"
+          [disabled]="isLoading"
+          nzBlock
+        >
+          ตอบข้อสงสัย
+        </button>
+      </div>
+    </div>
+  </form>
+
+</ion-content>

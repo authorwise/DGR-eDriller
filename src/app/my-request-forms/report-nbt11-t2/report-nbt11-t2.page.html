@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        [text]=""
+        [defaultHref]="'/tabs/dgr/homes/request-forms'"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title
+      >แบบแจ้งรายชื่อและตัวอย่างลายมือชื่อของผู้มีอำนาจรายงานการใช้น้ำบาดาล</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="formhasstep" [scrollEvents]="true">
+  <div [className]="'steps-content step-to-'+(currentStep)">
+    <form nz-form (ngSubmit)="submitForm()" [formGroup]="validateForm">
+      <app-atwformgroup
+        [elements]="formObjElm.elements.slice(0,8)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-1"
+      ></app-atwformgroup>
+
+      <div class="padding-15">
+        <div nz-row [nzGutter]="[8,8]">
+          <div nz-col nzXs="24">
+            <button
+              nz-button
+              class="login-form-button login-form-margin"
+              [nzType]="'primary'"
+              type="submit"
+              *ngIf="currentStep===2"
+              nzBlock
+            >
+              ส่ง
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>

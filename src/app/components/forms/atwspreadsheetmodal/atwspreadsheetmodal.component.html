@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>{{ pageTitle }}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button  (click)="onCancel()">
+        <ion-icon slot="icon-only" name="close"></ion-icon> ยกเลิก
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content>
+  <div></div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <button nz-button (click)="onConfirm()" nzType="primary">
+        <i nz-icon nzType="aim" nzTheme="outline"></i> ตกลง
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

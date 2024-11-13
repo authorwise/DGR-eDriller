@@ -1,0 +1,163 @@
+<nz-form-item
+  [className]="
+    'awt-bind-' +
+    getFormType() +
+    ' ant-form-item ant-row form-item-spece' +
+    (getFormType() === 'hidden' ? ' none-display' : '')
+  "
+  [id]="'contrainer-item-' + properties.id"
+>
+<nz-form-label
+    [nzFor]="properties.id"
+    *ngIf="beforeLabel"
+    [nzSpan]="24"
+    class="custom-before-header txt-blue"
+  >
+    {{ beforeLabel[properties.id] }}
+  </nz-form-label>
+  <app-atwmappicker
+    *ngIf="
+      getFormType() === 'text' && properties.label.indexOf('Latitude') > -1
+    "
+    [mapPickerBind]="mapPickerBind"
+    [validateForm]="validateForm"
+  ></app-atwmappicker>
+  <!-- <app-atwspreadsheetpicker
+    *ngIf="
+      getFormType() === 'spreadsheet' 
+    "
+    [spreadsheetPickerBind]="spreadsheetPickerBind"
+    [validateForm]="validateForm"
+  ></app-atwspreadsheetpicker> -->
+  <nz-form-label
+    [nzFor]="properties.id"
+    *ngIf="properties.label != ''"
+    [nzSpan]="24"
+  >
+    {{ properties.label }}
+    <span *ngIf="isError && isError.invalid" class="danger-txt">*</span>
+  </nz-form-label>
+  <nz-form-control
+    *ngIf="getFormType() === 'textarea' || getFormType() === 'richtext'"
+    [formGroup]="validateForm"
+    [nzSpan]="24"
+    [nzHasFeedback]="isError?.invalid"
+    nzErrorTip="สำคัญ"
+  >
+    <textarea
+      rows="4"
+      nz-input
+      nzBlock
+      nzSize="large"
+      [name]="properties.id"
+      [readOnly]="isReadOnly"
+      type="text"
+      [id]="properties.id"
+      [formControlName]="properties.id"
+    ></textarea>
+  </nz-form-control>
+  <nz-form-control
+    *ngIf="getFormType() === 'text'"
+    [nzSpan]="24"
+    [nzHasFeedback]="isError?.invalid"
+    nzErrorTip="สำคัญ"
+    [formGroup]="validateForm"
+  >
+    <input
+      nz-input
+      [name]="properties.id"
+      type="text"
+      [readOnly]="isReadOnly"
+      [id]="properties.id"
+      [formControlName]="properties.id"
+  /></nz-form-control>
+  <nz-form-control
+    *ngIf="getFormType() === 'password'"
+    [nzSpan]="24"
+    [nzHasFeedback]="isError?.invalid"
+    nzErrorTip="สำคัญ"
+    [formGroup]="validateForm"
+  >
+    <input
+      nz-input
+      [name]="properties.id"
+      type="password"
+      [readOnly]="isReadOnly"
+      [id]="properties.id"
+      [formControlName]="properties.id"
+      value=""
+  /></nz-form-control>
+  <!-- <nz-date-picker
+      *ngIf="getFormType() === 'datePicker'"
+      nzSize="large"
+      [formControlName]="properties.id"
+    ></nz-date-picker> -->
+  <app-atwupload
+    *ngIf="getFormType() === 'fileupload'"
+    [formId]="properties.id"
+    [properties]="properties"
+    [validateForm]="validateForm"
+    [formHook]="formHook"
+  ></app-atwupload>
+  <div
+    [className]="
+      properties.value.indexOf('<b>') === 0 ? 'headform' : 'html-display'
+    "
+    *ngIf="
+      getFormType() === 'html' &&
+      properties.value.indexOf('&nbsp;') < 0 &&
+      properties.value.indexOf('<p></p>') < 0 &&
+      properties.value.indexOf('script>') < 0
+    "
+    [innerHTML]="properties.value"
+  ></div>
+
+  <app-atwcheckbox
+    *ngIf="getFormType() === 'checkbox'"
+    [properties]="properties"
+    [validateForm]="validateForm"
+    [formHook]="formHook"
+  >
+  </app-atwcheckbox>
+  <app-atwdatepicker
+    *ngIf="getFormType() === 'datePicker'"
+    [formId]="properties.id"
+    [properties]="properties"
+    [validateForm]="validateForm"
+    [formHook]="formHook"
+  ></app-atwdatepicker>
+  <app-atwpopupselectbox
+    *ngIf="getFormType() === 'popupselectbox'"
+    [formId]="properties.id"
+    [properties]="properties"
+    [validateForm]="validateForm"
+    [formHook]="formHook"
+    [isError]="isError"
+    [visibilityControl]="visibilityControl"
+    [visibilityValue]="visibilityValue"
+  ></app-atwpopupselectbox>
+  <app-atwselect
+    *ngIf="getFormType() === 'select'"
+    [formId]="properties.id"
+    [properties]="properties"
+    [validateForm]="validateForm"
+    [formHook]="formHook"
+    [visibilityControl]="visibilityControl"
+    [visibilityValue]="visibilityValue"
+  ></app-atwselect>
+  <app-atwhidden
+    *ngIf="getFormType() === 'hidden'"
+    [formId]="properties.id"
+    [properties]="properties"
+    [validateForm]="validateForm"
+    [formHook]="formHook"
+    [visibilityControl]="visibilityControl"
+    [visibilityValue]="visibilityValue"
+  ></app-atwhidden>
+  <app-atwradio
+    *ngIf="getFormType() === 'radio'"
+    [validateForm]="validateForm"
+    [properties]="properties"
+    [formHook]="formHook"
+  ></app-atwradio>
+</nz-form-item>

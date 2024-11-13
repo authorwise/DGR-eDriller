@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>เกี่ยวกับฉัน</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center" *ngIf="isLoading">
+    <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="24" class="ion-text-center ion-padding-vertical">
+      <nz-avatar [nzSize]="64" nzIcon="user"></nz-avatar>
+      <div>{{ userFullname }} ({{ gwDrillerID }})</div>
+    </div>
+  </div>
+
+  <ion-list>
+    <div *ngFor="let m of menu" nz-row>
+      <div nz-col class="gutter-row atw-list-menu" [nzSpan]="24">
+        <ion-item
+          [routerLink]="m.menuLink"
+          routerDirection="forward"
+          lines="full"
+        >
+          <ion-img
+            alt="{{ m.menuAlt }}"
+            src="{{ m.menuImg }}"
+            slot="start"
+          ></ion-img>
+          <p>{{ m.name }}</p>
+        </ion-item>
+      </div>
+    </div>
+  </ion-list>
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <ion-button (click)="onLogout()" button>
+        <ion-icon name="exit" slot="start"></ion-icon>
+        <ion-label>Logout</ion-label>
+      </ion-button>
+    </div>
+    <form nz-form [nzLayout]="'inline'" (ngSubmit)="submitForm()"></form>
+  </div>
+</ion-content>

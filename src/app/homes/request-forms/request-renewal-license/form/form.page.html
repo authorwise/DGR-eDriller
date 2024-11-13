@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        [text]=""
+        [defaultHref]="'/tabs/dgr/homes/request-forms/request-renewal-license'"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>นบ.2 คำขอต่ออายุใบอนุญาต</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="formhasstep" [scrollEvents]="true">
+  <div class="padding-15 padding-b-0">
+    <nz-steps
+      nzDirection="horizontal"
+      nzSize="small"
+      [nzCurrent]="currentStep-1"
+    >
+      <nz-step nzTitle=""></nz-step>
+      <nz-step nzTitle=""></nz-step>
+      <nz-step nzTitle=""></nz-step>
+    </nz-steps>
+  </div>
+
+  <div [className]="'steps-content step-to-'+(currentStep)">
+    <form nz-form (ngSubmit)="submitForm()" [formGroup]="validateForm">
+      <app-atwformgroup
+        [elements]="formObjElm.elements.slice(0,11)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[0]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-1"
+      ></app-atwformgroup>
+
+      <app-atwformgroup
+        [elements]="formObjElm.elements.slice(11,12)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[1]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-2"
+      ></app-atwformgroup>
+
+      <app-atwformgroup
+        [elements]="formObjElm.elements.slice(12,33)"
+        [validateForm]="validateForm"
+        [stepValidateForm]="stepValidateForm[2]"
+        [preFetch]="preFetch"
+        [formHook]="formHook"
+        class="nb1-step-3"
+      ></app-atwformgroup>
+
+      <div class="padding-15">
+        <div nz-row [nzGutter]="[8,8]">
+          <div nz-col nzXs="12">
+            <button
+              nz-button
+              class="login-form-button login-form-margin"
+              [nzType]="'primary'"
+              type="button"
+              *ngIf="currentStep>1"
+              nzBlock
+              (click)="prevStep()"
+            >
+              <i nz-icon nzType="left"></i> ย้อนกลับ
+            </button>
+          </div>
+          <div nz-col nzXs="12">
+            <button
+              nz-button
+              class="login-form-button login-form-margin"
+              [nzType]="'primary'"
+              type="button"
+              nzBlock
+              (click)="nextStep()"
+              *ngIf="currentStep<3"
+            >
+              ถัดไป <i nz-icon nzType="right"></i>
+            </button>
+          </div>
+          <div nz-col nzXs="24">
+            <button
+              nz-button
+              class="login-form-button login-form-margin"
+              [nzType]="'primary'"
+              type="submit"
+              *ngIf="currentStep===3"
+              nzBlock
+            >
+              ส่งข้อมูลคำขอ
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>

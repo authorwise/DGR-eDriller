@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-toolbar class="ion-text-center">
+        <img alt="DGR" class="header-logo" (click)="openHome()" src="../../assets/icon/logo_original_color_dgr@2x.png" />
+    </ion-toolbar>
+    <ion-toolbar class="custom-toolbar">
+        <ion-title class="custom-header-title">หน้าหลัก</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col *ngFor="let m of menu" size="6" size-sm="6" size-md="3" size-lg="2" class="ion-text-justify">
+                <ion-card class="ion-text-justify main-menu-card" [routerLink]="m.menuLink" disabled="{{m.disabledMenu}}">
+                    <ion-card-header>
+                        <ion-img alt="{{ m.menuAlt }}" class="custom-menu-img icon-main-menu" src="{{ m.menuImg }}"></ion-img>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <p class="ion-text-center home-menu-label">{{ m.name }}</p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
